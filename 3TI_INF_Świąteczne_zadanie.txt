@@ -1,0 +1,69 @@
+def dodaj_prezent(lista_prezentow):
+    nazwa = input("Podaj nazwę prezentu: ")
+    osoba = input("Dla kogo jest ten prezent? ")
+    lista_prezentow.append({'nazwa': nazwa, 'osoba': osoba, 'status': 'nie kupiony'})
+
+
+
+def usun_prezent(lista_prezentow):
+    nazwa = input("Podaj nazwę prezentu do usunięcia: ")
+    lista_prezentow[:] = [prezent for prezent in lista_prezentow if prezent ['nazwa']!= nazwa]
+ 
+
+    
+def wyswietl_prezenty(lista_prezentow):
+    lista_prezentow.sort(key=lambda x: x['nazwa'])
+    for prezent in lista_prezentow:
+        print (f"Prezent: {prezent['nazwa']}, Osoba: {prezent['osoba']}, Status: {prezent['status']}")
+
+
+def oznacz_prezent(lista_prezentow):
+    nazwa = input("Podaj nazwę prezentu do oznaczenia jako kupiony: ")
+    for prezent in lista_prezentow:
+        if prezent['nazwa'] == nazwa:
+            prezent['status'] = 'kupiony'
+            break
+
+
+def main():
+    lista_prezentow = []
+    
+    while True:
+        print("\nMenu:")
+        print("1. Dodaj prezent")
+        print("2. Usuń prezent")
+        print("3. Wyświetl listę prezentów")
+        print("4. Oznacz prezent jako kupiony")
+        print("5. Zakończ")
+        
+        wybor = input("Wybierz opcję: ")
+        
+        if wybor == '1':
+            dodaj_prezent(lista_prezentow)
+        elif wybor == '2':
+            usun_prezent(lista_prezentow)
+        elif wybor == '3':
+            wyswietl_prezenty(lista_prezentow)
+        elif wybor == '4':
+            oznacz_prezent(lista_prezentow)
+        elif wybor == '5':
+            print("Zakończenie programu.")
+            break
+        else:
+            print("Nieprawidłowy wybór, spróbuj ponownie.")
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
+
